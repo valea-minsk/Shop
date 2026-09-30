@@ -24,7 +24,6 @@
       min-height: 100vh;
     }
 
-    /* --- Контейнер для ограничения ширины --- */
     .container {
       max-width: 1280px;
       margin: 0 auto;
@@ -207,14 +206,13 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 0.4s ease;
+      transition: transform 0.4s ease, opacity 0.3s ease;
     }
 
     .product-card:hover .product-img img {
       transform: scale(1.02);
     }
 
-    /* Бейджик (новинка/скидка) */
     .badge {
       position: absolute;
       top: 14px;
@@ -258,11 +256,18 @@
       line-height: 1.3;
     }
 
+    .product-desc {
+      font-size: 14px;
+      color: #6b6b7a;
+      margin-bottom: 12px;
+      line-height: 1.4;
+      flex: 1;
+    }
+
     .product-price {
       font-size: 20px;
       font-weight: 700;
       color: #1e1e2a;
-      margin-top: auto;
       margin-bottom: 14px;
       display: flex;
       align-items: center;
@@ -276,61 +281,40 @@
       text-decoration: line-through;
     }
 
-    .product-actions {
+    /* --- Выбор цвета --- */
+    .color-picker {
       display: flex;
       align-items: center;
-      justify-content: space-between;
       gap: 8px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
     }
 
-    .btn-add {
-      background: transparent;
-      border: 1.5px solid #d9d2ca;
-      color: #3a3a4a;
-      padding: 10px 12px;
-      border-radius: 40px;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      flex: 1;
-      letter-spacing: 0.2px;
+    .color-label {
+      font-size: 13px;
+      color: #9a8f86;
+      margin-right: 4px;
     }
 
-    .btn-add i {
-      font-size: 15px;
-    }
-
-    .btn-add:hover {
-      border-color: #c49a6c;
-      background-color: #fdf7f2;
-      color: #c49a6c;
-    }
-
-    .wishlist-icon {
-      background: transparent;
-      border: 1.5px solid #d9d2ca;
+    .color-swatch {
+      width: 26px;
+      height: 26px;
       border-radius: 50%;
-      width: 42px;
-      height: 42px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      border: 2px solid transparent;
       cursor: pointer;
-      transition: all 0.2s;
-      color: #6b6b7a;
-      font-size: 18px;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      position: relative;
       flex-shrink: 0;
     }
 
-    .wishlist-icon:hover {
+    .color-swatch:hover {
+      transform: scale(1.1);
+    }
+
+    .color-swatch.active {
       border-color: #c49a6c;
-      color: #c49a6c;
-      background-color: #fdf7f2;
+      box-shadow: 0 0 0 2px #fff, 0 0 0 4px #c49a6c;
     }
 
     /* --- Футер --- */
@@ -461,7 +445,6 @@
       <div class="header-icons">
         <i class="fas fa-search"></i>
         <i class="far fa-heart"></i>
-        <i class="fas fa-shopping-bag"></i>
         <i class="far fa-user"></i>
       </div>
     </div>
@@ -487,110 +470,126 @@
 
       <!-- Сетка карточек товаров -->
       <div class="product-grid">
-        <!-- Карточка 1 -->
-        <article class="product-card">
+
+        <!-- Карточка 1 — Пальто (3 цвета) -->
+        <article class="product-card" data-colors="Бежевый|https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=600&auto=format&fit=crop&q=80;Чёрный|https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=600&auto=format&fit=crop&q=80;Серый|https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&auto=format&fit=crop&q=80">
           <div class="product-img">
-            <img src="https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=600&auto=format&fit=crop&q=80" alt="Трендовое пальто" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=600&auto=format&fit=crop&q=80" alt="Пальто оверсайз" loading="lazy">
             <span class="badge">Новинка</span>
           </div>
           <div class="product-info">
             <div class="product-category">Верхняя одежда</div>
             <h3 class="product-title">Пальто оверсайз из шерсти</h3>
+            <p class="product-desc">Мягкое шерстяное пальто свободного кроя с глубокими карманами. Идеально для прохладной погоды.</p>
             <div class="product-price">12 490 ₽</div>
-            <div class="product-actions">
-              <button class="btn-add"><i class="fas fa-cart-plus"></i> В корзину</button>
-              <button class="wishlist-icon" aria-label="В избранное"><i class="far fa-heart"></i></button>
+            <div class="color-picker">
+              <span class="color-label">Цвет:</span>
+              <span class="color-swatch active" data-index="0" style="background:#d9c7b0;" title="Бежевый"></span>
+              <span class="color-swatch" data-index="1" style="background:#2b2b2b;" title="Чёрный"></span>
+              <span class="color-swatch" data-index="2" style="background:#8a8a8a;" title="Серый"></span>
             </div>
           </div>
         </article>
 
-        <!-- Карточка 2 -->
-        <article class="product-card">
+        <!-- Карточка 2 — Платье (2 цвета) -->
+        <article class="product-card" data-colors="Розовый|https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&auto=format&fit=crop&q=80;Синий|https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=600&auto=format&fit=crop&q=80">
           <div class="product-img">
-            <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&auto=format&fit=crop&q=80" alt="Летнее платье" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&auto=format&fit=crop&q=80" alt="Платье миди" loading="lazy">
           </div>
           <div class="product-info">
             <div class="product-category">Платья</div>
             <h3 class="product-title">Платье миди с открытыми плечами</h3>
+            <p class="product-desc">Лёгкое летнее платье из вискозы. Подчёркивает талию и создаёт романтичный образ.</p>
             <div class="product-price">6 790 ₽</div>
-            <div class="product-actions">
-              <button class="btn-add"><i class="fas fa-cart-plus"></i> В корзину</button>
-              <button class="wishlist-icon" aria-label="В избранное"><i class="far fa-heart"></i></button>
+            <div class="color-picker">
+              <span class="color-label">Цвет:</span>
+              <span class="color-swatch active" data-index="0" style="background:#e8b4b8;" title="Розовый"></span>
+              <span class="color-swatch" data-index="1" style="background:#3b5b8c;" title="Синий"></span>
             </div>
           </div>
         </article>
 
-        <!-- Карточка 3 -->
-        <article class="product-card">
+        <!-- Карточка 3 — Футболка (3 цвета) -->
+        <article class="product-card" data-colors="Белый|https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=600&auto=format&fit=crop&q=80;Чёрный|https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=600&auto=format&fit=crop&q=80;Оливковый|https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=600&auto=format&fit=crop&q=80">
           <div class="product-img">
-            <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=600&auto=format&fit=crop&q=80" alt="Базовая футболка" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=600&auto=format&fit=crop&q=80" alt="Футболка" loading="lazy">
             <span class="badge sale">-20%</span>
           </div>
           <div class="product-info">
             <div class="product-category">Футболки и топы</div>
             <h3 class="product-title">Футболка хлопок organic</h3>
+            <p class="product-desc">Базовая футболка из 100% органического хлопка. Мягкая, дышащая, не теряет форму.</p>
             <div class="product-price">
               1 990 ₽
               <span class="old-price">2 490 ₽</span>
             </div>
-            <div class="product-actions">
-              <button class="btn-add"><i class="fas fa-cart-plus"></i> В корзину</button>
-              <button class="wishlist-icon" aria-label="В избранное"><i class="far fa-heart"></i></button>
+            <div class="color-picker">
+              <span class="color-label">Цвет:</span>
+              <span class="color-swatch active" data-index="0" style="background:#f5f5f5;" title="Белый"></span>
+              <span class="color-swatch" data-index="1" style="background:#2b2b2b;" title="Чёрный"></span>
+              <span class="color-swatch" data-index="2" style="background:#6b7a4a;" title="Оливковый"></span>
             </div>
           </div>
         </article>
 
-        <!-- Карточка 4 -->
-        <article class="product-card">
+        <!-- Карточка 4 — Джинсы (2 цвета) -->
+        <article class="product-card" data-colors="Синий|https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=600&auto=format&fit=crop&q=80;Чёрный|https://images.unsplash.com/photo-1542272604-787c3835535d?w=600&auto=format&fit=crop&q=80">
           <div class="product-img">
             <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=600&auto=format&fit=crop&q=80" alt="Джинсы" loading="lazy">
           </div>
           <div class="product-info">
             <div class="product-category">Джинсы</div>
             <h3 class="product-title">Джинсы mom fit с высокой посадкой</h3>
+            <p class="product-desc">Классические джинсы с завышенной талией. Плотный деним, подчёркивает фигуру.</p>
             <div class="product-price">5 490 ₽</div>
-            <div class="product-actions">
-              <button class="btn-add"><i class="fas fa-cart-plus"></i> В корзину</button>
-              <button class="wishlist-icon" aria-label="В избранное"><i class="far fa-heart"></i></button>
+            <div class="color-picker">
+              <span class="color-label">Цвет:</span>
+              <span class="color-swatch active" data-index="0" style="background:#4a6b8c;" title="Синий"></span>
+              <span class="color-swatch" data-index="1" style="background:#2b2b2b;" title="Чёрный"></span>
             </div>
           </div>
         </article>
 
-        <!-- Карточка 5 -->
-        <article class="product-card">
+        <!-- Карточка 5 — Куртка (2 цвета) -->
+        <article class="product-card" data-colors="Чёрный|https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&auto=format&fit=crop&q=80;Коричневый|https://images.unsplash.com/photo-1520975954732-35dd22299614?w=600&auto=format&fit=crop&q=80">
           <div class="product-img">
-            <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&auto=format&fit=crop&q=80" alt="Кожаная куртка" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&auto=format&fit=crop&q=80" alt="Куртка косуха" loading="lazy">
             <span class="badge">Новинка</span>
           </div>
           <div class="product-info">
             <div class="product-category">Верхняя одежда</div>
             <h3 class="product-title">Куртка косуха из экокожи</h3>
+            <p class="product-desc">Стильная косуха с асимметричной молнией. Практичный материал, не требует особого ухода.</p>
             <div class="product-price">9 850 ₽</div>
-            <div class="product-actions">
-              <button class="btn-add"><i class="fas fa-cart-plus"></i> В корзину</button>
-              <button class="wishlist-icon" aria-label="В избранное"><i class="far fa-heart"></i></button>
+            <div class="color-picker">
+              <span class="color-label">Цвет:</span>
+              <span class="color-swatch active" data-index="0" style="background:#1e1e1e;" title="Чёрный"></span>
+              <span class="color-swatch" data-index="1" style="background:#6b4a2e;" title="Коричневый"></span>
             </div>
           </div>
         </article>
 
-        <!-- Карточка 6 -->
-        <article class="product-card">
+        <!-- Карточка 6 — Блуза (3 цвета) -->
+        <article class="product-card" data-colors="Белый|https://images.unsplash.com/photo-1564257631407-4deb1f99d992?w=600&auto=format&fit=crop&q=80;Розовый|https://images.unsplash.com/photo-1598554747436-c9293d6a588f?w=600&auto=format&fit=crop&q=80;Голубой|https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&auto=format&fit=crop&q=80">
           <div class="product-img">
             <img src="https://images.unsplash.com/photo-1564257631407-4deb1f99d992?w=600&auto=format&fit=crop&q=80" alt="Шелковая блуза" loading="lazy">
           </div>
           <div class="product-info">
             <div class="product-category">Футболки и топы</div>
             <h3 class="product-title">Блуза из шёлка с бантом</h3>
+            <p class="product-desc">Элегантная шёлковая блуза с завязкой на шее. Подходит для офиса и вечерних выходов.</p>
             <div class="product-price">7 290 ₽</div>
-            <div class="product-actions">
-              <button class="btn-add"><i class="fas fa-cart-plus"></i> В корзину</button>
-              <button class="wishlist-icon" aria-label="В избранное"><i class="far fa-heart"></i></button>
+            <div class="color-picker">
+              <span class="color-label">Цвет:</span>
+              <span class="color-swatch active" data-index="0" style="background:#f5f5f5;" title="Белый"></span>
+              <span class="color-swatch" data-index="1" style="background:#e8b4b8;" title="Розовый"></span>
+              <span class="color-swatch" data-index="2" style="background:#a8c8e8;" title="Голубой"></span>
             </div>
           </div>
         </article>
 
-        <!-- Карточка 7 -->
-        <article class="product-card">
+        <!-- Карточка 7 — Сумка (3 цвета) -->
+        <article class="product-card" data-colors="Бежевый|https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600&auto=format&fit=crop&q=80;Чёрный|https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&auto=format&fit=crop&q=80;Красный|https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=600&auto=format&fit=crop&q=80">
           <div class="product-img">
             <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600&auto=format&fit=crop&q=80" alt="Сумка кроссбоди" loading="lazy">
             <span class="badge sale">-15%</span>
@@ -598,67 +597,77 @@
           <div class="product-info">
             <div class="product-category">Аксессуары</div>
             <h3 class="product-title">Сумка кроссбоди кожаная</h3>
+            <p class="product-desc">Компактная сумка через плечо из натуральной кожи. Регулируемый ремень, три отделения.</p>
             <div class="product-price">
               4 990 ₽
               <span class="old-price">5 890 ₽</span>
             </div>
-            <div class="product-actions">
-              <button class="btn-add"><i class="fas fa-cart-plus"></i> В корзину</button>
-              <button class="wishlist-icon" aria-label="В избранное"><i class="far fa-heart"></i></button>
+            <div class="color-picker">
+              <span class="color-label">Цвет:</span>
+              <span class="color-swatch active" data-index="0" style="background:#c8b096;" title="Бежевый"></span>
+              <span class="color-swatch" data-index="1" style="background:#1e1e1e;" title="Чёрный"></span>
+              <span class="color-swatch" data-index="2" style="background:#a83a3a;" title="Красный"></span>
             </div>
           </div>
         </article>
 
-        <!-- Карточка 8 -->
-        <article class="product-card">
+        <!-- Карточка 8 — Юбка (2 цвета) -->
+        <article class="product-card" data-colors="Бежевый|https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=600&auto=format&fit=crop&q=80;Чёрный|https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=600&auto=format&fit=crop&q=80">
           <div class="product-img">
             <img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=600&auto=format&fit=crop&q=80" alt="Юбка плиссе" loading="lazy">
           </div>
           <div class="product-info">
             <div class="product-category">Платья</div>
             <h3 class="product-title">Юбка плиссе макси</h3>
+            <p class="product-desc">Летящая юбка в складку с эластичным поясом. Создаёт лёгкий и женственный силуэт.</p>
             <div class="product-price">4 590 ₽</div>
-            <div class="product-actions">
-              <button class="btn-add"><i class="fas fa-cart-plus"></i> В корзину</button>
-              <button class="wishlist-icon" aria-label="В избранное"><i class="far fa-heart"></i></button>
+            <div class="color-picker">
+              <span class="color-label">Цвет:</span>
+              <span class="color-swatch active" data-index="0" style="background:#d9c7b0;" title="Бежевый"></span>
+              <span class="color-swatch" data-index="1" style="background:#1e1e1e;" title="Чёрный"></span>
             </div>
           </div>
         </article>
 
-        <!-- Карточка 9 -->
-        <article class="product-card">
+        <!-- Карточка 9 — Худи (3 цвета) -->
+        <article class="product-card" data-colors="Серый|https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&auto=format&fit=crop&q=80;Чёрный|https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600&auto=format&fit=crop&q=80;Бордовый|https://images.unsplash.com/photo-1578681994506-b8f463449011?w=600&auto=format&fit=crop&q=80">
           <div class="product-img">
             <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&auto=format&fit=crop&q=80" alt="Худи oversize" loading="lazy">
           </div>
           <div class="product-info">
             <div class="product-category">Футболки и топы</div>
             <h3 class="product-title">Худи oversize с принтом</h3>
+            <p class="product-desc">Тёплое худи свободного кроя с мягким начёсом внутри. Универсальный вариант на каждый день.</p>
             <div class="product-price">3 890 ₽</div>
-            <div class="product-actions">
-              <button class="btn-add"><i class="fas fa-cart-plus"></i> В корзину</button>
-              <button class="wishlist-icon" aria-label="В избранное"><i class="far fa-heart"></i></button>
+            <div class="color-picker">
+              <span class="color-label">Цвет:</span>
+              <span class="color-swatch active" data-index="0" style="background:#8a8a8a;" title="Серый"></span>
+              <span class="color-swatch" data-index="1" style="background:#1e1e1e;" title="Чёрный"></span>
+              <span class="color-swatch" data-index="2" style="background:#6b2e3a;" title="Бордовый"></span>
             </div>
           </div>
         </article>
 
-        <!-- Карточка 10 -->
-        <article class="product-card">
+        <!-- Карточка 10 — Брюки (2 цвета) -->
+        <article class="product-card" data-colors="Бежевый|https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=600&auto=format&fit=crop&q=80;Чёрный|https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=600&auto=format&fit=crop&q=80">
           <div class="product-img">
             <img src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=600&auto=format&fit=crop&q=80" alt="Брюки палаццо" loading="lazy">
           </div>
           <div class="product-info">
             <div class="product-category">Джинсы</div>
             <h3 class="product-title">Брюки палаццо со стрелками</h3>
+            <p class="product-desc">Широкие брюки с завышенной талией и стрелками. Визуально удлиняют ноги.</p>
             <div class="product-price">5 990 ₽</div>
-            <div class="product-actions">
-              <button class="btn-add"><i class="fas fa-cart-plus"></i> В корзину</button>
-              <button class="wishlist-icon" aria-label="В избранное"><i class="far fa-heart"></i></button>
+            <div class="color-picker">
+              <span class="color-label">Цвет:</span>
+              <span class="color-swatch active" data-index="0" style="background:#d9c7b0;" title="Бежевый"></span>
+              <span class="color-swatch" data-index="1" style="background:#1e1e1e;" title="Чёрный"></span>
             </div>
           </div>
         </article>
 
-        <!-- Карточка 11 -->
-        <article class="product-card">
+        <!-- Карточка 11 — Очки (3 цвета) -->
+        <article class="product-card" data-colors="Коричневый|https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?w=600&auto=format&fit=crop&q=80;Чёрный|https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=600&auto=format&fit=crop&q=80;Золотой|https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600&auto=format&fit=crop&q=80">
           <div class="product-img">
             <img src="https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?w=600&auto=format&fit=crop&q=80" alt="Солнцезащитные очки" loading="lazy">
             <span class="badge">Новинка</span>
@@ -666,72 +675,16 @@
           <div class="product-info">
             <div class="product-category">Аксессуары</div>
             <h3 class="product-title">Очки солнцезащитные ретро</h3>
+            <p class="product-desc">Стильные очки в ретро-оправе с UV-защитой 400. Лёгкие и удобные для повседневной носки.</p>
             <div class="product-price">2 190 ₽</div>
-            <div class="product-actions">
-              <button class="btn-add"><i class="fas fa-cart-plus"></i> В корзину</button>
-              <button class="wishlist-icon" aria-label="В избранное"><i class="far fa-heart"></i></button>
+            <div class="color-picker">
+              <span class="color-label">Цвет:</span>
+              <span class="color-swatch active" data-index="0" style="background:#6b4a2e;" title="Коричневый"></span>
+              <span class="color-swatch" data-index="1" style="background:#1e1e1e;" title="Чёрный"></span>
+              <span class="color-swatch" data-index="2" style="background:#c9a84a;" title="Золотой"></span>
             </div>
           </div>
         </article>
 
-        <!-- Карточка 12 -->
-        <article class="product-card">
-          <div class="product-img">
-            <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&auto=format&fit=crop&q=80" alt="Свитер крупной вязки" loading="lazy">
-          </div>
-          <div class="product-info">
-            <div class="product-category">Верхняя одежда</div>
-            <h3 class="product-title">Свитер крупной вязки</h3>
-            <div class="product-price">6 290 ₽</div>
-            <div class="product-actions">
-              <button class="btn-add"><i class="fas fa-cart-plus"></i> В корзину</button>
-              <button class="wishlist-icon" aria-label="В избранное"><i class="far fa-heart"></i></button>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </main>
-
-  <!-- Футер -->
-  <footer>
-    <div class="container footer-inner">
-      <div class="footer-copyright">
-        © 2025 MODASTYLE. Все права защищены.
-      </div>
-      <div class="footer-links">
-        <a href="#">Доставка</a>
-        <a href="#">Возврат</a>
-        <a href="#">Контакты</a>
-        <a href="#">Политика конфиденциальности</a>
-      </div>
-      <div class="footer-social">
-        <i class="fab fa-instagram"></i>
-        <i class="fab fa-telegram"></i>
-        <i class="fab fa-vk"></i>
-        <i class="fab fa-youtube"></i>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Небольшой скрипт для переключения активной категории (для демонстрации) -->
-  <script>
-    (function() {
-      const categoryBtns = document.querySelectorAll('.category-btn');
-      
-      categoryBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-          // Убираем active у всех кнопок
-          categoryBtns.forEach(b => b.classList.remove('active'));
-          // Добавляем active текущей
-          this.classList.add('active');
-          
-          // Здесь можно добавить логику фильтрации товаров,
-          // но для статичной страницы каталога достаточно визуального переключения.
-          // В реальном проекте можно фильтровать карточки по data-атрибутам.
-        });
-      });
-    })();
-  </script>
-</body>
-</html>
+        <!-- Карточка 12 — Свитер (3 цвета) -->
+        <article class="product-card" data-colors="Молочный|https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&auto=format&fit=crop&q=80;Серый|https://images.unsplash.com/photo-1608063615781-e2ef8c73d114?w=600&auto=format&fit=crop&q=80;Синий|https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&
