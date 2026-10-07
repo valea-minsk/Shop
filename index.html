@@ -1,38 +1,53 @@
 <!doctype html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Каталог одежды — VALEA</title>
-    <!-- Fonts -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
-    <style>
-    :root{
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Cormorant+Garamond:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
       --bg: #4F433E;
       --text: #F2ECE3;
       --card-bg: rgba(242, 236, 227, 0.06);
       --stroke: rgba(242, 236, 227, 0.18);
       --accent: #F2ECE3;
     }
-          * { box-sizing: border-box; }
-    body{
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
       margin: 0;
       background: var(--bg);
       color: var(--text);
-      font-family: "Cormorant Garamond", serif;
+      font-family: "Cormorant Garamond", "Times New Roman", Georgia, serif;
+      font-size: 19px;
+      /* Cormorant мельче — чуть увеличил базовый размер */
       line-height: 1.4;
     }
-          a{ color: inherit; text-decoration: none; }
-          /* Layout */
-    .page{
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Layout */
+    .page {
       min-height: 100vh;
       padding: 28px 18px 60px;
       position: relative;
       overflow-x: hidden;
     }
-          .top-bar{
+
+    .top-bar {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
@@ -40,25 +55,29 @@
       max-width: 1200px;
       margin: 0 auto;
     }
-          .brand{
+
+    .brand {
       display: flex;
       flex-direction: column;
       gap: 6px;
     }
-          .brand__name{
-      font-family: "Playfair Display", serif;
+
+    .brand__name {
+      font-family: "Playfair Display", "Times New Roman", Georgia, serif;
       font-size: 40px;
       font-weight: 600;
       letter-spacing: 0.5px;
       margin: 0;
     }
-          .brand__tagline{
+
+    .brand__tagline {
       margin: 0;
       opacity: 0.85;
       font-size: 18px;
     }
-          /* Menu right-top */
-    .menu{
+
+    /* Menu right-top */
+    .menu {
       display: flex;
       gap: 18px;
       align-items: center;
@@ -66,49 +85,57 @@
       padding-top: 6px;
       font-size: 20px;
     }
-          .menu__link{
+
+    .menu__link {
       padding: 8px 10px;
       border: 1px solid transparent;
       border-radius: 10px;
       transition: 160ms ease;
       opacity: 0.95;
     }
-    .menu__link:hover{
+
+    .menu__link:hover {
       border-color: var(--stroke);
       background: rgba(242, 236, 227, 0.05);
     }
-          /* Header / page title */
-    .section{
+
+    /* Header / page title */
+    .section {
       max-width: 1200px;
       margin: 22px auto 0;
     }
-          .section__header{
+
+    .section__header {
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
       gap: 18px;
       margin: 28px 0 18px;
     }
-          .h1{
+
+    .h1 {
       font-family: "Playfair Display", serif;
       font-size: 34px;
       font-weight: 600;
       margin: 0;
     }
-          .section__note{
+
+    .section__note {
       margin: 0;
       opacity: 0.85;
       max-width: 520px;
       font-size: 18px;
     }
-          /* Categories */
-    .categories{
+
+    /* Categories */
+    .categories {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       margin: 12px 0 22px;
     }
-          .cat-btn{
+
+    .cat-btn {
       cursor: pointer;
       padding: 10px 14px;
       border: 1px solid var(--stroke);
@@ -120,35 +147,41 @@
       transition: 160ms ease;
       user-select: none;
     }
-          .cat-btn:hover{
+
+    .cat-btn:hover {
       background: rgba(242, 236, 227, 0.08);
     }
-          .cat-btn[aria-pressed="true"]{
+
+    .cat-btn[aria-pressed="true"] {
       background: rgba(242, 236, 227, 0.12);
       border-color: rgba(242, 236, 227, 0.35);
     }
-          /* Grid */
-    .grid{
+
+    /* Grid */
+    .grid {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
       gap: 16px;
       padding-top: 10px;
     }
-          .card{
+
+    .card {
       grid-column: span 4;
       border: 1px solid var(--stroke);
       background: var(--card-bg);
       border-radius: 18px;
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     }
-          .card__media{
+
+    .card__media {
       position: relative;
       aspect-ratio: 4 / 5;
       background: rgba(242, 236, 227, 0.04);
       border-bottom: 1px solid var(--stroke);
     }
-          .card__img{
+
+    .card__img {
       position: absolute;
       inset: 0;
       width: 100%;
@@ -158,53 +191,63 @@
       transform: scale(1.02);
       transition: 220ms ease;
     }
-          .card__img.is-active{
+
+    .card__img.is-active {
       opacity: 1;
       transform: scale(1);
     }
-          .card__body{
+
+    .card__body {
       padding: 14px 14px 16px;
-            display: flex;
+      display: flex;
       flex-direction: column;
       gap: 10px;
     }
-          .card__title{
+
+    .card__title {
       font-family: "Playfair Display", serif;
       font-size: 22px;
       font-weight: 600;
       margin: 0;
     }
-          .card__desc{
+
+    .card__desc {
       margin: 0;
       opacity: 0.9;
       font-size: 17px;
-      min-height: 3.6em; /* помогает держать одинаковую высоту карточек */
+      min-height: 3.6em;
+      /* помогает держать одинаковую высоту карточек */
     }
-          .card__bottom{
+
+    .card__bottom {
       display: flex;
       flex-direction: column;
       gap: 10px;
       margin-top: 2px;
     }
-          .price{
+
+    .price {
       font-family: "Playfair Display", serif;
       font-size: 22px;
       font-weight: 600;
       margin: 0;
     }
-          .color-picker{
+
+    .color-picker {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
       align-items: center;
       font-size: 16px;
     }
-          .color-picker__label{
+
+    .color-picker__label {
       opacity: 0.9;
       margin-right: 2px;
       white-space: nowrap;
     }
-          .swatch{
+
+    .swatch {
       cursor: pointer;
       border: 1px solid rgba(242, 236, 227, 0.35);
       width: 18px;
@@ -215,31 +258,66 @@
       transition: 140ms ease;
       background: var(--swatch);
     }
-          .swatch[aria-pressed="true"]::after{
+
+    .swatch[aria-pressed="true"]::after {
       content: "";
       position: absolute;
       inset: -4px;
       border-radius: 50%;
       border: 2px solid rgba(242, 236, 227, 0.8);
     }
-          /* Responsive */
-    @media (max-width: 980px){
-      .card{ grid-column: span 6; }
-      .section__header{ flex-direction: column; align-items: flex-start; }
-      .menu{ font-size: 18px; }
-      .brand__name{ font-size: 34px; }
+
+    /* Responsive */
+    @media (max-width: 980px) {
+      .card {
+        grid-column: span 6;
+      }
+
+      .section__header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .menu {
+        font-size: 18px;
+      }
+
+      .brand__name {
+        font-size: 34px;
+      }
     }
-    @media (max-width: 560px){
-      .top-bar{ flex-direction: column; align-items: flex-start; }
-      .menu{ width: 100%; justify-content: flex-end; }
-      .card{ grid-column: span 12; }
-      .brand__name{ font-size: 30px; }
+
+    @media (max-width: 560px) {
+      .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .menu {
+        width: 100%;
+        justify-content: flex-end;
+      }
+
+      .card {
+        grid-column: span 12;
+      }
+
+      .brand__name {
+        font-size: 30px;
+      }
     }
-          /* Simple pages sections */
-    .page-section{ display: none; }
-    .page-section.is-active{ display: block; }
+
+    /* Simple pages sections */
+    .page-section {
+      display: none;
+    }
+
+    .page-section.is-active {
+      display: block;
+    }
   </style>
 </head>
+
 <body>
   <div class="page">
     <header class="top-bar">
@@ -247,13 +325,13 @@
         <h1 class="brand__name">VALEA</h1>
         <p class="brand__tagline">Каталог современной одежды</p>
       </div>
-            <!-- Menu top-right -->
+      <!-- Menu top-right -->
       <nav class="menu" aria-label="Основное меню">
         <a class="menu__link" href="#catalog" data-nav="catalog">Каталог</a>
         <a class="menu__link" href="#about" data-nav="about">О нас</a>
       </nav>
     </header>
-        <!-- CATALOG -->
+    <!-- CATALOG -->
     <main id="catalog" class="section page-section is-active">
       <div class="section__header">
         <h2 class="h1">Каталог</h2>
@@ -261,7 +339,7 @@
           Выберите категорию и цвет — изображение в карточке обновится автоматически.
         </p>
       </div>
-            <!-- Categories -->
+      <!-- Categories -->
       <div class="categories" role="tablist" aria-label="Категории одежды">
         <button class="cat-btn" type="button" data-category="all" aria-pressed="true">Все</button>
         <button class="cat-btn" type="button" data-category="suits" aria-pressed="false">Костюмы</button>
@@ -271,188 +349,164 @@
         <button class="cat-btn" type="button" data-category="pants" aria-pressed="false">Брюки</button>
         <button class="cat-btn" type="button" data-category="tops" aria-pressed="false">Топы</button>
       </div>
-            <!-- Products Grid -->
+      <!-- Products Grid -->
       <section class="grid" aria-label="Товары">
         <!-- CARD: Suit -->
         <article class="card" data-category="suits" data-product-id="vale-suit-1">
           <div class="card__media">
             <!-- images per color -->
-            <img class="card__img is-active"
-                 src="images/Costume 001 red.jpg"
-                 alt="VALEA костюм, цвет бордовый"
-                 data-color="black" />
-            <img class="card__img"
-                 src="images/Costume 001 gray.png"
-                 alt="VALEA костюм, цвет серый"
-                 data-color="beige" />
+            <img class="card__img is-active" src="images/Costume 001 red.jpg" alt="VALEA костюм, цвет бордовый"
+              data-color="black" />
+            <img class="card__img" src="images/Costume 001 gray.png" alt="VALEA костюм, цвет серый"
+              data-color="beige" />
           </div>
           <div class="card__body">
             <h3 class="card__title">Costume 001</h3>
             <p class="card__desc">
               65% полиэстер<br>
               32% вискоза<br>
-              3% эластан 
+              3% эластан
             </p>
-                        <div class="card__bottom">
+            <div class="card__bottom">
               <p class="price">530 byn</p>
-                            <div class="color-picker" role="group" aria-label="Выбор цвета">
+              <div class="color-picker" role="group" aria-label="Выбор цвета">
                 <span class="color-picker__label">Цвет:</span>
-                              <button class="swatch" type="button" aria-pressed="true"
-                        data-color="black" style="--swatch:#5b1e23;" title="Бордовый"></button>
-                              <button class="swatch" type="button" aria-pressed="false"
-                        data-color="beige" style="--swatch:#575b63;" title="Серый"></button>
+                <button class="swatch" type="button" aria-pressed="true" data-color="black" style="--swatch:#5b1e23;"
+                  title="Бордовый"></button>
+                <button class="swatch" type="button" aria-pressed="false" data-color="beige" style="--swatch:#575b63;"
+                  title="Серый"></button>
               </div>
             </div>
           </div>
         </article>
-                <!-- CARD: Skirt -->
+        <!-- CARD: Skirt -->
         <article class="card" data-category="skirts" data-product-id="vale-skirt-1">
           <div class="card__media">
-            <img class="card__img is-active"
-                 src="https://picsum.photos/seed/vale-skirt-1-sand/800/1000"
-                 alt="VALEA юбка, цвет песочный"
-                 data-color="sand" />
-            <img class="card__img"
-                 src="https://picsum.photos/seed/vale-skirt-1-forest/800/1000"
-                 alt="VALEA юбка, цвет изумрудный"
-                 data-color="forest" />
+            <img class="card__img is-active" src="https://picsum.photos/seed/vale-skirt-1-sand/800/1000"
+              alt="VALEA юбка, цвет песочный" data-color="sand" />
+            <img class="card__img" src="https://picsum.photos/seed/vale-skirt-1-forest/800/1000"
+              alt="VALEA юбка, цвет изумрудный" data-color="forest" />
           </div>
-                    <div class="card__body">
+          <div class="card__body">
             <h3 class="card__title">Юбка “Mira”</h3>
             <p class="card__desc">
               Легкая ткань, комфорт на каждый день. Посадка подчеркивает линию талии.
             </p>
-                        <div class="card__bottom">
+            <div class="card__bottom">
               <p class="price">7 900 ₽</p>
-                            <div class="color-picker" role="group" aria-label="Выбор цвета">
+              <div class="color-picker" role="group" aria-label="Выбор цвета">
                 <span class="color-picker__label">Цвет:</span>
-                                <button class="swatch" type="button" aria-pressed="true"
-                        data-color="sand" style="--swatch:#D8C3A4;" title="Песочный"></button>
-                                        <button class="swatch" type="button" aria-pressed="false"
-                        data-color="forest" style="--swatch:#1F3A2E;" title="Изумрудный"></button>
+                <button class="swatch" type="button" aria-pressed="true" data-color="sand" style="--swatch:#D8C3A4;"
+                  title="Песочный"></button>
+                <button class="swatch" type="button" aria-pressed="false" data-color="forest" style="--swatch:#1F3A2E;"
+                  title="Изумрудный"></button>
               </div>
             </div>
           </div>
         </article>
-                <!-- CARD: Shirt -->
+        <!-- CARD: Shirt -->
         <article class="card" data-category="shirts" data-product-id="vale-shirt-1">
           <div class="card__media">
-            <img class="card__img is-active"
-                 src="https://picsum.photos/seed/vale-shirt-1-white/800/1000"
-                 alt="VALEA рубашка, цвет белый"
-                 data-color="white" />
-            <img class="card__img"
-                 src="https://picsum.photos/seed/vale-shirt-1-blue/800/1000"
-                 alt="VALEA рубашка, цвет голубой"
-                 data-color="blue" />
+            <img class="card__img is-active" src="https://picsum.photos/seed/vale-shirt-1-white/800/1000"
+              alt="VALEA рубашка, цвет белый" data-color="white" />
+            <img class="card__img" src="https://picsum.photos/seed/vale-shirt-1-blue/800/1000"
+              alt="VALEA рубашка, цвет голубой" data-color="blue" />
           </div>
-                    <div class="card__body">
+          <div class="card__body">
             <h3 class="card__title">Рубашка “Oris”</h3>
             <p class="card__desc">
               Чистые линии, удобная застежка и мягкая фактура. Легко сочетается с любым низом.
             </p>
-                        <div class="card__bottom">
+            <div class="card__bottom">
               <p class="price">6 400 ₽</p>
-                            <div class="color-picker" role="group" aria-label="Выбор цвета">
+              <div class="color-picker" role="group" aria-label="Выбор цвета">
                 <span class="color-picker__label">Цвет:</span>
-                                <button class="swatch" type="button" aria-pressed="true"
-                        data-color="white" style="--swatch:#F2ECE3;" title="Белый"></button>
-                                        <button class="swatch" type="button" aria-pressed="false"
-                        data-color="blue" style="--swatch:#567FA6;" title="Голубой"></button>
+                <button class="swatch" type="button" aria-pressed="true" data-color="white" style="--swatch:#F2ECE3;"
+                  title="Белый"></button>
+                <button class="swatch" type="button" aria-pressed="false" data-color="blue" style="--swatch:#567FA6;"
+                  title="Голубой"></button>
               </div>
             </div>
           </div>
         </article>
-                <!-- CARD: Jacket -->
+        <!-- CARD: Jacket -->
         <article class="card" data-category="jackets" data-product-id="vale-jacket-1">
           <div class="card__media">
-            <img class="card__img is-active"
-                 src="https://picsum.photos/seed/vale-jacket-1-taupe/800/1000"
-                 alt="VALEA жакет, цвет тауп"
-                 data-color="taupe" />
-            <img class="card__img"
-                 src="https://picsum.photos/seed/vale-jacket-1-navy/800/1000"
-                 alt="VALEA жакет, цвет темно-синий"
-                 data-color="navy" />
+            <img class="card__img is-active" src="https://picsum.photos/seed/vale-jacket-1-taupe/800/1000"
+              alt="VALEA жакет, цвет тауп" data-color="taupe" />
+            <img class="card__img" src="https://picsum.photos/seed/vale-jacket-1-navy/800/1000"
+              alt="VALEA жакет, цвет темно-синий" data-color="navy" />
           </div>
-                    <div class="card__body">
+          <div class="card__body">
             <h3 class="card__title">Жакет “Sana”</h3>
             <p class="card__desc">
               Структурированный жакет с аккуратной формой плеч. Идеален для многослойности.
             </p>
-                        <div class="card__bottom">
+            <div class="card__bottom">
               <p class="price">14 500 ₽</p>
-                            <div class="color-picker" role="group" aria-label="Выбор цвета">
+              <div class="color-picker" role="group" aria-label="Выбор цвета">
                 <span class="color-picker__label">Цвет:</span>
-                                <button class="swatch" type="button" aria-pressed="true"
-                        data-color="taupe" style="--swatch:#8E7B6A;" title="Тауп"></button>
-                                        <button class="swatch" type="button" aria-pressed="false"
-                        data-color="navy" style="--swatch:#1B2A3A;" title="Темно-синий"></button>
+                <button class="swatch" type="button" aria-pressed="true" data-color="taupe" style="--swatch:#8E7B6A;"
+                  title="Тауп"></button>
+                <button class="swatch" type="button" aria-pressed="false" data-color="navy" style="--swatch:#1B2A3A;"
+                  title="Темно-синий"></button>
               </div>
             </div>
           </div>
         </article>
-                <!-- CARD: Pants -->
+        <!-- CARD: Pants -->
         <article class="card" data-category="pants" data-product-id="vale-pants-1">
           <div class="card__media">
-            <img class="card__img is-active"
-                 src="https://picsum.photos/seed/vale-pants-1-charcoal/800/1000"
-                 alt="VALEA брюки, цвет графит"
-                 data-color="charcoal" />
-            <img class="card__img"
-                 src="https://picsum.photos/seed/vale-pants-1-beige2/800/1000"
-                 alt="VALEA брюки, цвет кремовый"
-                 data-color="cream" />
+            <img class="card__img is-active" src="https://picsum.photos/seed/vale-pants-1-charcoal/800/1000"
+              alt="VALEA брюки, цвет графит" data-color="charcoal" />
+            <img class="card__img" src="https://picsum.photos/seed/vale-pants-1-beige2/800/1000"
+              alt="VALEA брюки, цвет кремовый" data-color="cream" />
           </div>
-                    <div class="card__body">
+          <div class="card__body">
             <h3 class="card__title">Брюки “Vera”</h3>
             <p class="card__desc">
               Эластичная посадка и чистая линия силуэта. Смотрятся собранно без усилий.
             </p>
-                        <div class="card__bottom">
+            <div class="card__bottom">
               <p class="price">9 200 ₽</p>
-                            <div class="color-picker" role="group" aria-label="Выбор цвета">
+              <div class="color-picker" role="group" aria-label="Выбор цвета">
                 <span class="color-picker__label">Цвет:</span>
-                                <button class="swatch" type="button" aria-pressed="true"
-                        data-color="charcoal" style="--swatch:#2B2B2B;" title="Графит"></button>
-                                        <button class="swatch" type="button" aria-pressed="false"
-                        data-color="cream" style="--swatch:#E7D9C0;" title="Кремовый"></button>
+                <button class="swatch" type="button" aria-pressed="true" data-color="charcoal" style="--swatch:#2B2B2B;"
+                  title="Графит"></button>
+                <button class="swatch" type="button" aria-pressed="false" data-color="cream" style="--swatch:#E7D9C0;"
+                  title="Кремовый"></button>
               </div>
             </div>
           </div>
         </article>
-                <!-- CARD: Top -->
+        <!-- CARD: Top -->
         <article class="card" data-category="tops" data-product-id="vale-top-1">
           <div class="card__media">
-            <img class="card__img is-active"
-                 src="https://picsum.photos/seed/vale-top-1-coral/800/1000"
-                 alt="VALEA топ, цвет коралловый"
-                 data-color="coral" />
-            <img class="card__img"
-                 src="https://picsum.photos/seed/vale-top-1-sage/800/1000"
-                 alt="VALEA топ, цвет шалфей"
-                 data-color="sage" />
+            <img class="card__img is-active" src="https://picsum.photos/seed/vale-top-1-coral/800/1000"
+              alt="VALEA топ, цвет коралловый" data-color="coral" />
+            <img class="card__img" src="https://picsum.photos/seed/vale-top-1-sage/800/1000"
+              alt="VALEA топ, цвет шалфей" data-color="sage" />
           </div>
-                    <div class="card__body">
+          <div class="card__body">
             <h3 class="card__title">Топ “Elin”</h3>
             <p class="card__desc">
               Нежная ткань и комфортная посадка. Отлично смотрится и соло, и под жакет.
             </p>
-                        <div class="card__bottom">
+            <div class="card__bottom">
               <p class="price">5 600 ₽</p>
-                            <div class="color-picker" role="group" aria-label="Выбор цвета">
+              <div class="color-picker" role="group" aria-label="Выбор цвета">
                 <span class="color-picker__label">Цвет:</span>
-                                <button class="swatch" type="button" aria-pressed="true"
-                        data-color="coral" style="--swatch:#E67B6A;" title="Коралловый"></button>
-                                        <button class="swatch" type="button" aria-pressed="false"
-                                          data-color="sage" style="--swatch:#7A9B7E;" title="Шалфей"></button>
+                <button class="swatch" type="button" aria-pressed="true" data-color="coral" style="--swatch:#E67B6A;"
+                  title="Коралловый"></button>
+                <button class="swatch" type="button" aria-pressed="false" data-color="sage" style="--swatch:#7A9B7E;"
+                  title="Шалфей"></button>
               </div>
             </div>
           </div>
         </article>
-              </section>
+      </section>
     </main>
-        <!-- ABOUT -->
+    <!-- ABOUT -->
     <section id="about" class="section page-section" aria-label="О нас">
       <h2 class="h1">О нас</h2>
       <p class="section__note">
@@ -461,33 +515,33 @@
       </p>
     </section>
   </div>
-    <script>
+  <script>
     // Category filtering + active state
     const catButtons = document.querySelectorAll('.cat-btn');
     const cards = document.querySelectorAll('.card');
-          function setVisibleCards(category){
+    function setVisibleCards(category) {
       cards.forEach(card => {
         const match = category === 'all' || card.dataset.category === category;
         card.style.display = match ? '' : 'none';
       });
     }
-          catButtons.forEach(btn => {
+    catButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         catButtons.forEach(b => b.setAttribute('aria-pressed', 'false'));
         btn.setAttribute('aria-pressed', 'true');
         setVisibleCards(btn.dataset.category);
       });
     });
-          // Color swatches -> switch active image inside the same card
+    // Color swatches -> switch active image inside the same card
     document.querySelectorAll('.card').forEach(card => {
       const images = card.querySelectorAll('.card__img');
       const swatches = card.querySelectorAll('.swatch');
-            swatches.forEach(swatch => {
+      swatches.forEach(swatch => {
         swatch.addEventListener('click', () => {
           const color = swatch.dataset.color;
-                    // update swatch pressed state
+          // update swatch pressed state
           swatches.forEach(s => s.setAttribute('aria-pressed', s === swatch ? 'true' : 'false'));
-                    // switch images
+          // switch images
           images.forEach(img => {
             const isActive = img.dataset.color === color;
             img.classList.toggle('is-active', isActive);
@@ -495,13 +549,13 @@
         });
       });
     });
-          // Simple nav between sections
+    // Simple nav between sections
     const navLinks = document.querySelectorAll('[data-nav]');
     const sections = document.querySelectorAll('.page-section');
-          function activateSection(id){
+    function activateSection(id) {
       sections.forEach(s => s.classList.toggle('is-active', s.id === id));
     }
-          navLinks.forEach(link => {
+    navLinks.forEach(link => {
       link.addEventListener('click', (e) => {
         const id = link.getAttribute('data-nav');
         e.preventDefault();
@@ -510,4 +564,5 @@
     });
   </script>
 </body>
+
 </html>
