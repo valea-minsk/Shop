@@ -10,13 +10,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600&display=swap" rel="stylesheet">
   <style>
-    @font-face {
-  font-family: 'Cormorant Garamond Local';
-  src: url('fonts/CormorantGaramond-Regular.ttf') format('ttf');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
     :root {
       --bg: #4F433E;
       --text: #F2ECE3;
@@ -217,13 +210,13 @@
     }
 
     .card__desc {
-  font-family: 'Cormorant Garamond Local', "Cormorant Garamond", "Times New Roman", Georgia, serif;
-  font-style: normal;
-  margin: 0;
-  opacity: 0.9;
-  font-size: 17px;
-  min-height: 3.6em;
-}
+      font-style: normal;
+      margin: 0;
+      opacity: 0.9;
+      font-size: 17px;
+      min-height: 3.6em;
+      /* помогает держать одинаковую высоту карточек */
+    }
 
     .card__bottom {
       display: flex;
